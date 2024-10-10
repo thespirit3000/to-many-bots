@@ -1,28 +1,20 @@
-const express = require("express");
-const swaggerUI = require("swagger-ui-express");
-const path = require("path");
-const YAML = require("yamljs");
-const userRouter = require("./resources/users/user.router");
-const tasksRouter = require("./resources/tasks/task.router");
-const boardRouter = require("./resources/boards/board.router");
+// src/index.js
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
 
-const app = express();
-const swaggerDocument = YAML.load(path.join(__dirname, "../doc/api.yaml"));
+dotenv.config();
 
-app.use(express.json());
+const app: Express = express();
+const port = process.env.PORT || 3000;
 
-app.use("/doc", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-
-app.use("/", (req, res, next) => {
-  if (req.originalUrl === "/") {
-    res.send("Service is running!");
-    return;
-  }
-  next();
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Server");
 });
 
-app.use("/users", userRouter);
-app.use("/boards", boardRouter);
-boardRouter.use("/:boardID/tasks", tasksRouter);
+const runServer = () => {
+  app.listen(port, () => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+  });
+};
 
-module.exports = app;
+export default runServer;

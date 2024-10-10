@@ -2,6 +2,7 @@ import { validateEnvs } from "./validateEnvs.ts";
 import { runBot } from "./bot/index.ts";
 import * as dotenv from "dotenv";
 import { connectDb } from "./mongodb/index.ts";
+import runServer from "./server/app.ts";
 dotenv.config();
 
 const ENVS = process.env;
@@ -12,6 +13,7 @@ const runApp = async () => {
     await connectDb()
       .then(() => {
         runBot();
+        runServer();
       })
       .catch((error) => {
         console.error("error on connect " + error);

@@ -7,7 +7,6 @@ const USER = process.env.MONGO_DB_USER || "";
 const PASSWORD = encodeURIComponent(process.env.MONGO_DB_PASSWORD || "");
 const DB_NAME = process.env.MONGO_DB_NAME || "";
 const HOST = process.env.MONGO_DB_HOST || "localhost";
-
 const dbUrl = `${DB}${USER}:${PASSWORD}@${HOST}/${DB_NAME}?authSource=admin`;
 // const dbUrl = process.env.MONGO_DATABASE_URL as string;
 const connectDb = async () => {
