@@ -11,7 +11,6 @@ const runApp = async () => {
   try {
     await connectDb()
       .then(() => {
-        console.log("console --- console");
         runBot();
       })
       .catch((error) => {
