@@ -27,6 +27,12 @@ const findTaskById = async (taskID: string): Promise<Task> => {
   }
 };
 
+const createTask = async (taskData: Task): Promise<Task> => {
+  if (isEmpty(taskData)) throw new HttpException(400, "task data is empty");
+  const createTaskData: Task = await taskModel.create({ ...taskData });
+  return createTaskData;
+};
+
 // public createUser = async (req: Request, res: Response, next: NextFunction) => {
 //   try {
 //     const userData: CreateUserDto = req.body;
