@@ -6,6 +6,6 @@ const tasksSchema = new Schema({
   boardId: { type: String, required: true },
   reward: { type: Number, required: true },
 });
-const Task = mongoose.model("Task", tasksSchema);
+const taskModel = mongoose.model("Task", tasksSchema);
 
-export default Task;
+export default taskModel;
