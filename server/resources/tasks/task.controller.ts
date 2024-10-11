@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
 import { Task } from "./task.interface";
-import { findAllTasks, findTaskById } from "./task.service";
+import { findAllTasks, findTaskById, createTask } from "./task.service";
 
 const getTasks = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -23,7 +23,17 @@ const getTaskById = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { getTasks, getTaskById };
+const setTask = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const taskData: Task = req.body;
+    const createTaskData: Task = await createTask(taskData);
+    res.status(201).json({ data: createTaskData, message: "created" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { getTasks, getTaskById, setTask };
 // class UsersController {
 //   public userService = new userService();
 

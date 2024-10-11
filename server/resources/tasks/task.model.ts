@@ -1,4 +1,5 @@
-import mongoose, { Schema } from "mongoose";
+import { model, Schema, Document } from "mongoose";
+import { Task } from "./task.interface";
 
 const tasksSchema = new Schema({
   title: { type: String, required: true },
@@ -6,6 +7,6 @@ const tasksSchema = new Schema({
   boardId: { type: String, required: true },
   reward: { type: Number, required: true },
 });
-const taskModel = mongoose.model("Task", tasksSchema);
+const taskModel = model<Task & Document>("Task", tasksSchema);
 
 export default taskModel;

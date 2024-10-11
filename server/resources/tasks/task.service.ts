@@ -19,7 +19,7 @@ const findTaskById = async (taskID: string): Promise<Task> => {
   try {
     console.log("test");
     if (isEmpty(taskID)) throw new HttpException(400, "Task Id is empty");
-    const task: Task = await taskModel.findOne({ id: taskID });
+    const task: Task = await taskModel.findOne({ _id: taskID });
     if (!task) throw new HttpException(409, "Task doesn't exist");
     return task;
   } catch (error) {
@@ -86,6 +86,7 @@ const createTask = async (taskData: Task): Promise<Task> => {
 export {
   findAllTasks,
   findTaskById,
+  createTask,
   // getAll,
   // getById,
   // getTasks,
