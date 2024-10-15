@@ -14,6 +14,7 @@ const getTasks = async (req: Request, res: Response, next: NextFunction) => {
 
 const getTaskById = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log(req);
     const taskId: string = req.params.id;
     const taskData: Task = await findTaskById(taskId);
 
@@ -28,7 +29,7 @@ const setTask: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req.body);
+  console.log(req.params);
   try {
     const taskData = req.body;
     const createTaskData: Task = await createTask(taskData);

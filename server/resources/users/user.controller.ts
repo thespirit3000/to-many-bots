@@ -33,8 +33,8 @@ const getUserByTelegramId = async (
   next: NextFunction
 ) => {
   try {
-    const telegramId: number = req.params.telegramId;
-    const userData: User = await findUserByTelegramId(telegramId);
+    const id: number = Number(req.params.id);
+    const userData: User = await findUserByTelegramId(id);
     res.status(201).json({ data: userData, message: "UserData by Id" });
   } catch (error) {
     next(error);
