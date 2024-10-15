@@ -38,4 +38,4 @@ const setTask: RequestHandler = async (
   }
 };
 
-export { getTasks, getTaskById, setTask, setNewPost };
+export { getTasks, getTaskById, setTask };
