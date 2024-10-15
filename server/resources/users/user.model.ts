@@ -15,12 +15,16 @@ const userSchema = new Schema(
     telegramId: { type: Number, unique: true, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: false },
-    balance: { type: Number, required: true },
+
+    balance: { type: Number, required: true, default: 0 },
+    rewardMultiplayer: { type: Number, default: 1 },
+    tasks: [{ taskId: String, status: String }],
   },
   {
     timestamps: true,
   }
 );
+
 const userModel = model<User & Document>("User", userSchema);
 
 export default userModel;
