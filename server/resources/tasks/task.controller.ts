@@ -23,10 +23,6 @@ const getTaskById = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const setNewPost = async (req, res, next) => {
-  res.send(req.body);
-};
-
 const setTask: RequestHandler = async (
   req: Request,
   res: Response,
