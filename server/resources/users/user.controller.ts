@@ -40,3 +40,4 @@ const getUserByTelegramId = async (
     next(error);
   }
 };
+export { getUsers };

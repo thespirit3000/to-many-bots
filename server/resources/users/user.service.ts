@@ -2,7 +2,6 @@ import userModel from "./user.model";
 import { User } from "./user.model";
 import { isEmpty } from "../../../utils/utils";
 import { HttpException } from "../../../exceptions/HttpException";
-import mongoose from "mongoose";
 
 const findAllUsers = async (): Promise<User[]> => {
   try {

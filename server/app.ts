@@ -2,7 +2,8 @@
 import cors from "cors";
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import router from "./resources/tasks/task.router";
+import tasksRouter from "./resources/tasks/task.router";
+import usersRouter from "./resources/users/user.router";
 import bodyParser from "body-parser";
 
 dotenv.config();
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: "*", credentials: true }));
 
-app.use("/tasks", router);
+app.use("/tasks", tasksRouter);
+app.use("/users", usersRouter);
 
 const runServer = () => {
   app.listen(port, () => {
